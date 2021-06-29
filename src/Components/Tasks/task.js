@@ -6,17 +6,16 @@ import './task.css';
 import Input from "../Input-field/input";
 import Card from '../Card/card';
 import Loading from '../Loading/loading';
+import Navbar from '../navbar/navbar';
+import { Icon } from 'react-icons-kit'
+//import { plus } from 'react-icons-kit/feather'
+import {plus} from 'react-icons-kit/metrize/plus'
 
-const Task = ({userData,logoutUsers,createTask,alltasks,loadTasks,searchTask,loading}) =>{
+const Task = ({createTask,alltasks,loadTasks,searchTask,loading}) =>{
 
     const [title,setTitle]=useState('');
     const [description,setDescription]=useState('');
     const [search,setSearch]=useState('');
-    console.log(search);
-    let logOut=()=>{
-        logoutUsers()
-        localStorage.clear()
-        };
 
     let handleSubmitTask = async event => {
         event.preventDefault();
@@ -30,97 +29,81 @@ const Task = ({userData,logoutUsers,createTask,alltasks,loadTasks,searchTask,loa
 
       useEffect(()=>{
            search ? searchTask(search) : loadTasks() 
-      },[loadTasks,searchTask])
+      },[loadTasks,search,searchTask])
 
     if(loading) return <Loading />
     return(
         <div id="taskDiv">
-            <nav className="navbar navbar-expand-md navbar-dark">
-                <div>
-                    <h1 className="navbar-brand title">Task's</h1>
-                    <label className="userName">{userData.name}</label>
-                </div>
+        <Navbar />
            
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav ml-auto">
-                        <li className="nav-item">
-                        <div className="addbutton">
-                            <button 
-                                className="btn btn-success addTodo"
-                                data-bs-toggle="modal" 
-                                data-bs-target="#exampleModal"
-                            >
-                            <i className="fas fa-plus"></i> Add Tasks</button>
-                        </div>
+        <div className="addSearch">
+            <button className="btn position-fixed add">
+            <Icon 
+                size={20} 
+                icon={plus}
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"    
+                />
+            </button>
+                <input
+                className="search position-fixed"
+                    type="search" 
+                    placeholder="search..." 
+                    aria-label="Search"
+                    onChange={(e)=>setSearch(e.target.value)}
+                />
+        </div>
+            
                         
-                        <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div className="modal-dialog">
-                                <div className="modal-content">
-                                <div className="modal-header">
-                                    <h5 className="modal-title" id="exampleModalLabel">Hello there</h5>
-                                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div className="modal-body form-group">
-                                    <label>Title</label>
-                                    <Input 
-                                        type="text" 
-                                        name="title"
-                                        id="title"
-                                        value={title}
-                                        className="form-control"
-                                        handleChange={e => setTitle(e.target.value)}
-                                        />
-                                    <label>Description</label>   
-                                    <textarea 
-                                        type="text" 
-                                        name="title"
-                                        id="title"
-                                        value={description}
-                                        className="form-control"
-                                        onChange={e => setDescription(e.target.value)}
-                                        />
-                                </div>
-                                <div className="modal-footer">
-                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button 
-                                    type="button" 
-                                    className="btn btn-primary" 
-                                    data-bs-dismiss="modal"
-                                    onClick={handleSubmitTask}
-                                    >Save changes</button>
-                                </div>
-                                </div>
-                            </div>
-                            </div>
-                        </li>
-                        <li className="nav-item">
-                        <form className="form-inline">
-                            <input 
-                                className="form-control" 
-                                type="search" 
-                                placeholder="Search here" 
-                                aria-label="Search"
-                                onChange={(e)=>setSearch(e.target.value)}
-                            />
-                        </form>
-                        </li>
-                        <li className="nav-item">
-                            <button className="nav-link logout" onClick={logOut} data-toggle="tooltip" title="Logout">
-                            <i className="fal fa-sign-out-alt fa-2x"></i></button>
-                        </li>
-                    </ul>
+        <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal-dialog">
+                <div className="modal-content">
+                <div className="modal-header">
+                    <h5 className="modal-title" id="exampleModalLabel">Hello there</h5>
+                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-        </nav>
+                <div className="modal-body form-group">
+                    <label>Title</label>
+                    <Input 
+                        type="text" 
+                        name="title"
+                        id="title"
+                        value={title}
+                        className="form-control"
+                        handleChange={e => setTitle(e.target.value)}
+                        />
+                    <label>Description</label>   
+                    <textarea 
+                        type="text" 
+                        name="title"
+                        id="title"
+                        value={description}
+                        className="form-control"
+                        onChange={e => setDescription(e.target.value)}
+                        />
+                </div>
+                <div className="modal-footer">
+                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button 
+                    type="button" 
+                    className="btn btn-primary" 
+                    data-bs-dismiss="modal"
+                    onClick={handleSubmitTask}
+                    >Save changes</button>
+                </div>
+                </div>
+            </div>
+            </div>
             <div className="container">
                 <div className="card-container row justify-content-center">
-                        <div className="col-lg-8 col-md-8 col-sm-12 todo p-3 mt-4">
-                            <h3 className="headline">ToDo</h3>
-                            { search ? alltasks.map((one,index) =>
-                                <Card one={one} Key={index}/>) : alltasks.map((one,index) =>
-                                <Card one={one} Key={index}/>)}
+                        <div className="col-lg-8 col-md-8 col-sm-12 todo p-3">
+                            <h3 className="headline position-fixed">ToDo</h3>
+                            <div className="mt-5">
+                                { search ? alltasks.map((one,index) =>
+                                    <Card one={one} Key={index}/>) : alltasks.map((one,index) =>
+                                    <Card one={one} Key={index}/>) 
+                                }
+                            </div> 
                     </div>  
                 </div>
             </div>   

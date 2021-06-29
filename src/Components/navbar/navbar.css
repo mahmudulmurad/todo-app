@@ -1,0 +1,24 @@
+nav{
+    background-color: #222831;
+    width: 100%;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+body{
+    background-color: #fff;
+}
+.logout{
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.title{
+    margin-right:5px ;
+    font-size: 2rem;
+}
+.userName{
+    font-size:0.8rem;
+    color: #efda10;
+}
