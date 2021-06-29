@@ -1,0 +1,61 @@
+
+body{
+    background-color:#7D9097;
+    /* font-family: 'Montserrat', sans-serif; */
+    /* font-family: 'Nanum Myeongjo bold', serif; */
+    letter-spacing: 2px;
+    /* font-family: 'Ubuntu' sans-serif; */
+    min-height: 100vh;
+}
+
+#mainDIv{
+    width: 100%;
+    padding: 0 50%;
+    margin-right: auto;
+    margin-left: auto;
+   
+}
+.login-card{
+    margin-top: 1%;
+    border: 0;
+    border-radius: 27.5px;
+    box-shadow: 0 10px 30px 0 rgb(172 168 168 / 43%);
+    overflow: hidden;
+}
+.login-card-img{
+    border-radius: 0;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+.footer-link{
+    position: absolute;
+    color: #fff;
+    top:85.5%;
+    left:5%
+}
+.brand-logo{
+    text-align: left;
+}
+.logo{
+    width: 30%;
+    height: 30%;
+}
+.login-card-discription{
+    margin: 1%;
+    text-align: left;
+    font-size: 1.5rem;
+    font-family: 'Nanum Myeongjo', serif;
+}
+.form-group{
+    text-align: left;
+    margin: 3% 0;
+}
+.login-card-footer-text{
+    text-align: left;
+    margin: 1%;
+}
+
+

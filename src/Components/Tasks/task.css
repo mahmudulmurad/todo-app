@@ -1,0 +1,58 @@
+nav{
+    background-color: #222831;
+    width: 100%;
+    margin: 0;
+    position: relative;
+}
+body{
+    background-color: #fff;
+}
+.logout,.addTodo{
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+.addbutton{
+  margin-top: 2%;
+}
+.title{
+    margin-right:5px ;
+    font-size: 2rem;
+}
+.userName{
+    font-size:0.8rem;
+    color: #efda10;
+}
+.searchButton:hover{
+    background-color: #efda10;
+}
+.form-inline{
+    display: inline-grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: 2%
+}
+.nav-item{
+    display: inline-block;
+    padding: 0 1%;
+}
+.navbar-nav{
+    padding: 0 3%;
+}
+.card-container{
+    width: 100%;
+    height: auto;
+}
+.headline,.name{
+    color: #000;
+}
+.model{
+    position: absolute;
+    top: 5%;
+    left: 0;
+    z-index: 1040;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+}
+
+

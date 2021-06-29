@@ -1,0 +1,15 @@
+.login-btn {
+    margin: 1%;
+    background-color: #000;
+    border-radius: 4px;
+    color: #fff;
+    width: 60%;
+}
+.login-btn.register {
+    background-color: #17b89d;
+    color: #fff
+}
+.login-btn:hover{
+    background-color: #000;
+    color: #fff;
+}

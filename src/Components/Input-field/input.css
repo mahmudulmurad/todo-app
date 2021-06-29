@@ -1,0 +1,12 @@
+.group{
+    position: relative;
+}
+.forlabel{
+    font-family:'Nanum Myeongjo', serif ;
+}
+.form-control{
+    width: 60%;
+    height: auto;
+    border:none;
+    border-bottom: 1px solid #d5dae2;
+}
