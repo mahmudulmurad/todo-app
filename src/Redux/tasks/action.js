@@ -13,7 +13,7 @@ export const deleteTask = (id)=>{
   let data=id
   return() =>{
     axios
-    .delete(`${process.env.REACT_APP_BACKEND_URL}/tasks/${data}`,{
+    .delete(`${process.env.REACT_APP_BACKEND_URL}tasks/${data}`,{
       headers: {
         "Content-type": "application/json",
         'Authorization': 'Bearer ' + localStorage.getItem('token')
@@ -35,7 +35,7 @@ export const createSingleTask = task =>{
     }
     return (dispatch) => {
         axios
-        .post(`${process.env.REACT_APP_BACKEND_URL}/tasks`,obj,{
+        .post(`${process.env.REACT_APP_BACKEND_URL}tasks`,obj,{
           headers: {
             "Content-type": "application/json",
             'Authorization': 'Bearer ' + localStorage.getItem('token')
@@ -56,7 +56,7 @@ export const updateTask =task =>{
     "description":des1
   }
   return(dispatch) =>{
-   axios.patch(`${process.env.REACT_APP_BACKEND_URL}/tasks/update/${id}`,obj,{
+   axios.patch(`${process.env.REACT_APP_BACKEND_URL}tasks/update/${id}`,obj,{
     headers: {
       "Content-type": "application/json",
       'Authorization': 'Bearer ' + localStorage.getItem('token')
@@ -76,7 +76,7 @@ export const fetchAllTasks =() =>{
     return (dispatch) => {
         dispatch(loadingTask())
         axios
-        .get(`${process.env.REACT_APP_BACKEND_URL}/tasks`,{
+        .get(`${process.env.REACT_APP_BACKEND_URL}tasks`,{
           headers: {
             "Content-type": "application/json",
             'Authorization': 'Bearer ' + localStorage.getItem('token')
