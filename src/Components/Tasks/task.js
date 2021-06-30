@@ -1,34 +1,36 @@
-import React, { useState,useEffect} from 'react';
-import {connect} from 'react-redux';
-import {logoutUsers} from '../../Redux/user/action';
-import {createSingleTask,fetchAllTasks,afterSearch} from "../../Redux/tasks/action";
-import './task.css';
-import Input from "../Input-field/input";
-import Card from '../Card/card';
-import Loading from '../Loading/loading';
-import Navbar from '../navbar/navbar';
+import React, { useState,useEffect} from 'react'
+import {connect} from 'react-redux'
+import {logoutUsers} from '../../Redux/user/action'
+import {createSingleTask,fetchAllTasks,afterSearch} from "../../Redux/tasks/action"
+import './task.css'
+import Input from "../Input-field/input"
+import Card from '../Card/card'
+import Loading from '../Loading/loading'
+import Navbar from '../navbar/navbar'
 import { Icon } from 'react-icons-kit'
-//import { plus } from 'react-icons-kit/feather'
 import {plus} from 'react-icons-kit/metrize/plus'
 
-const Task = ({createTask,alltasks,loadTasks,searchTask,loading}) =>{
+const Task = ({createTask,alltasks,loadTasks,searchTask,loading,filteredTask}) =>{
 
-    const [title,setTitle]=useState('');
-    const [description,setDescription]=useState('');
-    const [search,setSearch]=useState('');
+    const [title,setTitle]=useState('')
+    const [description,setDescription]=useState('')
+    const [search,setSearch]=useState('')
 
+    let goForSearch = (e) =>{
+        setSearch(e.target.value)
+    }
     let handleSubmitTask = async event => {
-        event.preventDefault();
+        event.preventDefault()
         let obj={
             "name":title,
             "description":description
         }
         await createTask(obj)
-        await loadTasks();
+        await loadTasks()
       };
-
+      
       useEffect(()=>{
-           search ? searchTask(search) : loadTasks() 
+        search ? searchTask(search):loadTasks() 
       },[loadTasks,search,searchTask])
 
     if(loading) return <Loading />
@@ -50,7 +52,7 @@ const Task = ({createTask,alltasks,loadTasks,searchTask,loading}) =>{
                     type="search" 
                     placeholder="search..." 
                     aria-label="Search"
-                    onChange={(e)=>setSearch(e.target.value)}
+                    onChange={goForSearch}
                 />
         </div>
             
@@ -70,7 +72,7 @@ const Task = ({createTask,alltasks,loadTasks,searchTask,loading}) =>{
                         id="title"
                         value={title}
                         className="form-control"
-                        handleChange={e => setTitle(e.target.value)}
+                        onChange={e => setTitle(e.target.value)}
                         />
                     <label>Description</label>   
                     <textarea 
@@ -99,7 +101,7 @@ const Task = ({createTask,alltasks,loadTasks,searchTask,loading}) =>{
                         <div className="col-lg-8 col-md-8 col-sm-12 todo p-3">
                             <h3 className="headline position-fixed">ToDo</h3>
                             <div className="mt-5">
-                                { search ? alltasks.map((one,index) =>
+                                { search ? filteredTask.map((one,index) =>
                                     <Card one={one} Key={index}/>) : alltasks.map((one,index) =>
                                     <Card one={one} Key={index}/>) 
                                 }
@@ -114,6 +116,7 @@ const mapStateToProps= state =>{
     return{
         userData: state.user.current_user,
         alltasks:state.task.tasks,
+        filteredTask:state.task.tasks2,
         loading:state.task.loading
     }
   }

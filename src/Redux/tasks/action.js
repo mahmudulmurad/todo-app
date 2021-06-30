@@ -3,7 +3,8 @@ import {
     Fetch_Tasks,
     Fail_Calling_Tasks,
     Remove_Item,
-    Get_Single_Item
+    Get_Single_Item,
+    Filter_Tasks_From_Search
 } from './actionType';
 import axios from 'axios';
 
@@ -116,25 +117,7 @@ export const singleTask = inx =>({
   payload:inx
 });
 
-export const afterSearch = (data) =>{
-  let str = data
-  return (dispatch) => {
-    dispatch(loadingTask())
-    axios
-    .get(`http://localhost:3003/tasks/${str}`,{
-      headers: {
-        "Content-type": "application/json",
-        'Authorization': 'Bearer ' + localStorage.getItem('token')
-      }
-    })
-    .then((res) => {
-      dispatch(fetchTasks(res.data))
-    })
-    .catch(error => {
-      dispatch(failFetchingTask(error.message))
-    })
-  }
-}
-
-// type:Filter_Tasks_From_Search,
-// payload:data
+export const afterSearch = data =>({
+  type:Filter_Tasks_From_Search,
+  payload:data
+});
