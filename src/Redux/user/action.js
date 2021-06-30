@@ -44,7 +44,7 @@ export const fetchUsers = () => {
       }
         return (dispatch) => {
         axios
-        .post(`http://localhost:3003/users`,obj)
+        .post(`${process.env.REACT_APP_BACKEND_URL}/users`,obj)
         .then(response => {
           const user = response.data
           localStorage.setItem('token', response.data.token);
@@ -63,7 +63,7 @@ export const fetchUsers = () => {
     }
       return (dispatch) => {
       axios
-      .post(`http://localhost:3003/users/login`,obj)
+      .post(`${process.env.REACT_APP_BACKEND_URL}/users/login`,obj)
       .then(response => {
         const user = response.data
         localStorage.setItem('token', response.data.token);
@@ -77,7 +77,7 @@ export const fetchUsers = () => {
 export const logoutUsers = () => {
       return (dispatch) => {
       axios
-      .post(`http://localhost:3003/users/logout`, {
+      .post(`${process.env.REACT_APP_BACKEND_URL}/users/logout`, {
         headers: {
           "Content-type": "application/json",
           'Authorization': 'Bearer ' + localStorage.getItem('token')
