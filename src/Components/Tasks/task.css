@@ -34,110 +34,14 @@ z-index: 1;
 }
 .addSearch{
     width: 100%;
-    margin-left: 80%;
-    position: relative;
-}
-@media only screen and (max-width: 600px) {
-    .todo{
-        margin-top: 25% !important;
-    }
-    .add{
-        height: 40px;
-        top:8%;
-        right: 50%;
-    }
-    .search{
-        border: none;
-        border-bottom: 1px solid black;
-        height: 40px;
-        top:8%;
-        right: 13%;
-    }
-}
-@media only screen and (min-width: 600px){
-    .todo{
-        margin-top: 22% !important;
-    }
-    .add{
-        height: 40px;
-        top:16%;
-        right: 47%;
-    }
-    .search{
-        border: none;
-        border-bottom: 1px solid black;
-        height: 40px;
-        top:15%;
-        right: 19%;
-    }
-}
-@media only screen and (min-width: 600px) and (max-width : 767px) {
-    .todo{
-        margin-top: 22% !important;
-    }
-    .add{
-        height: 40px;
-        top:9%;
-        right: 47%;
-    }
-    .search{
-        border: none;
-        border-bottom: 1px solid black;
-        height: 40px;
-        top:9%;
-        right: 20%;
-    }
-}
-@media only screen and (min-width: 768px) {
-    .todo{
-        margin-top: 18% !important;
-    }
-    .add{
-        height: 40px;
-        top:9%;
-        right: 50%;
-    }
-    .search{
-        border: none;
-        border-bottom: 1px solid black;
-        height: 40px;
-        top:9%;
-        right: 25%;
-    }
-}
-@media only screen and (min-width: 992px) {
-    .todo{
-        margin-top: 16% !important;
-    }
-    .add{
-        height: 40px;
-        top:9%;
-        right: 42%;
-    }
-    .search{
-        border: none;
-        border-bottom: 1px solid black;
-        height: 40px;
-        top:9%;
-        right: 23%;
-    }
-}
-@media only screen and (min-width: 1200px) {
-    .todo{
-        margin-top: 8% !important;
-    }
-    .add{
-        height: 40px;
-        top:16%;
-        right: 17%;
-    }
-    .search{
-        border: none;
-        border-bottom: 1px solid black;
-        height: 40px;
-        top:16%;
-        right: 2%;
-    }
+    height: 5%;
+    text-align: center;
+    margin: auto;
+    padding-top: 52px;
 }
 
-
+.search{
+    border: none;
+    border-bottom: 1px solid black;
+    height: 40px;
+}

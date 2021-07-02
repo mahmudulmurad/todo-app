@@ -35,20 +35,20 @@ const Task = ({createTask,alltasks,loadTasks,searchTask,loading,filteredTask}) =
 
     if(loading) return <Loading />
     return(
-        <div id="taskDiv">
+        <div>
         <Navbar />
            
         <div className="addSearch">
-            <button className="btn position-fixed add">
+            <button className="btn add mx-2 my-2">
             <Icon 
-                size={20} 
+                size={25} 
                 icon={plus}
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"    
                 />
             </button>
                 <input
-                className="search position-fixed"
+                className="search"
                     type="search" 
                     placeholder="search..." 
                     aria-label="Search"
@@ -65,11 +65,11 @@ const Task = ({createTask,alltasks,loadTasks,searchTask,loading,filteredTask}) =
                     <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div className="modal-body form-group">
-                    <label>Title</label>
                     <Input 
                         type="text" 
                         name="title"
                         id="title"
+                        label="Title"
                         value={title}
                         className="form-control"
                         onChange={e => setTitle(e.target.value)}
@@ -99,7 +99,7 @@ const Task = ({createTask,alltasks,loadTasks,searchTask,loading,filteredTask}) =
             <div className="container">
                 <div className="card-container row justify-content-center">
                         <div className="col-lg-8 col-md-8 col-sm-12 todo p-3">
-                            <h3 className="headline position-fixed">ToDo</h3>
+                            <h3 className="headline">ToDo</h3>
                             <div className="mt-5">
                                 { search ? filteredTask.map((one,index) =>
                                     <Card one={one} Key={index}/>) : alltasks.map((one,index) =>
